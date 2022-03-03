@@ -1,0 +1,55 @@
+ul{
+    margin: auto;
+    margin-bottom: 20px;
+    max-width: 70vw;
+    border: 2px black solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    padding: 10px;
+}
+
+li{
+    padding: 5px;
+    border: 1px grey solid;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    max-width: 50vw;
+}
+
+.red-side{
+    grid-column: 2 / 2;
+}
+
+.blue-side{
+    grid-column: 1 / 1;
+}
+
+.top{
+    grid-row-start: 1;
+}
+.jungler{
+    grid-row-start: 2;
+}
+.mid{
+    grid-row-start: 3;
+}
+.adc{
+    grid-row-start: 4;
+}
+.support{
+    grid-row-start: 5;
+}
+
+.champ-img {
+    max-width: 3em;
+    max-height: 3em;
+}
+
+.win{
+    background-color: #aefada;
+}
+.loss{
+    background-color: #fe8aaa;
+}

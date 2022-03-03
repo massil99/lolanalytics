@@ -1,0 +1,17 @@
+.items{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.itemSlot{
+    width: 2em;
+    height: 2em;
+    border: 1px #333 solid;
+    background-color: grey;
+}
+
+.item-img{
+    width: 2em;
+    height: 2em;
+}
