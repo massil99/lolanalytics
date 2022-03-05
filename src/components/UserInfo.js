@@ -22,18 +22,18 @@ class UserInfo extends React.Component{
         return (
             (Object.keys(this.state.playerData).length !== 0) ?
             <div className="user-info-container">
+                <img className='tier-emblem' src={`${process.env.PUBLIC_URL+'/assets/Emblems/Emblem_'+this.state.playerData.tier}.png`}/>
                 <div>
                     <h1>{this.state.playerData.summonerName}</h1>
                     <div>
                         <p>W: {this.state.playerData.wins+ ' '} L: { this.state.playerData.losses} </p>
                         <p>{(100 * (this.state.playerData.wins / (this.state.playerData.losses + this.state.playerData.wins))).toFixed(2)}% WR</p>
                     </div>
-                </div>
-                <h4>rank: {
-                    this.state.playerData.tier + ' ' +
-                    this.state.playerData.rank + ' ' +
-                    this.state.playerData.leaguePoints}</h4>
-                <img className='tier-emblem' src={`${process.env.PUBLIC_URL+'/assets/Emblems/Emblem_'+this.state.playerData.tier}.png`}/>
+                    <h4>{
+                        this.state.playerData.tier + ' ' +
+                        this.state.playerData.rank + ' ' +
+                        this.state.playerData.leaguePoints}</h4>
+                    </div>
             </div>: 'loading...'
              
         );

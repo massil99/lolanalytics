@@ -1,8 +1,12 @@
-ul{
+.match-container{
     margin: auto;
-    margin-bottom: 20px;
+    padding: 0;
     max-width: 70vw;
-    border: 2px black solid;
+    margin-bottom: 20px;
+    border: 1px black solid;
+}
+
+ul{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
@@ -52,4 +56,18 @@ li{
 }
 .loss{
     background-color: #fe8aaa;
+}
+
+.retracted-match{
+    padding: 1rem 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.expend-btn{
+    width: 100%;
+    margin: 0;
+    border: none;
+    outline: none;
 }

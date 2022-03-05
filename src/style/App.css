@@ -1,4 +1,8 @@
+*{
+    box-sizing: border-box;
+}
 .search-bar{
+    border-bottom: 1px grey solid;
     padding: 2rem 1rem 0;
     background-color: burlywood;
 }
