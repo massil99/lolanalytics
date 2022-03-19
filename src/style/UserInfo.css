@@ -1,14 +1,21 @@
 .user-info-container{
+    padding: 1rem 0;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     border: 1px green solid;
     background-color:teal;
+
+    border-radius: 5px;
+
+    margin-right: 10%;
 }
 
 .tier-emblem{
-    width: 200px;
-    height: 200px;
-    border: 1px solid black;
-    background-color: grey;
+    width: 40%;
+    height: 40%;
+}
+.wr{
+    color: red;
 }

@@ -3,50 +3,90 @@ import {useState} from 'react';
 import Matchs from './components/Matchs';
 import UserInfo from './components/UserInfo'
 import './style/App.css'
+import {useQuery} from 'react-query';
+
+const count = 10;
  
 function App() {
-  const [stateUser, setStateUser] = useState({});
-  const [matchList, setMatchList] = useState([]);
+  const [summName, setSummName] = useState('');
   const {
     handleSubmit, // handles form submission
     register,
   } = useForm();
 
-  const onSubmit = (data) => {
-    setStateUser({});
-    setMatchList([]);
-    const fetchUser = async () => {
-      let res = 
+  const fetchUser = async ({ queryKey }) => {
+    if(summName !== ''){
+      const res1 = 
         await fetch(
-          `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${data.summName}?api_key=${process.env.REACT_APP_API_KEY}`
+          `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${queryKey[1]}?api_key=${process.env.REACT_APP_API_KEY}`
         );
-      let data_ = await res.json();
-      setStateUser(data_);
-
-      res = await fetch(`https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${data_.puuid}/ids?api_key=${process.env.REACT_APP_API_KEY}`);
-      data_ = await res.json();
-      setMatchList([])
-      data_.map(
-          (matchId) => fetch(`https://europe.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${process.env.REACT_APP_API_KEY}`)
-          .then(res => res.json())
-          .then(d => {setMatchList(old=>[...old, d])})
-      )
+      const data1 = await res1.json();
         
-    };
-    (data.summName !== undefined && fetchUser());
+      const res2 = await 
+        fetch(
+          `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${data1.puuid}/ids?api_key=${process.env.REACT_APP_API_KEY}&count=${count}`);
+      const data2 = await res2.json();
+
+      const matchs = 
+      await Promise.all(data2.map(async (matchId) => 
+        await fetch(`https://europe.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${process.env.REACT_APP_API_KEY}`)
+        .then(res => res.json()) 
+      ));
+      return {'user': data1, 'matchs': matchs};
+    }
+    return {};
   };
   
+  const {isLoading, error, data, refetch} = useQuery(['fetchUserAndMatchs', summName], fetchUser,{
+    enabled: false//summName !== ''
+  });
 
+  const onSubmit = (data) => {
+    setSummName(data.summName);
+    refetch();
+  }
+  const searchBar = 
+      <div>
+        <form className='search-bar' onSubmit={handleSubmit(onSubmit)}>
+          <input {...register('summName')} />
+          <button type="submit">
+            <i className="fas fa-search" />
+          </button>
+        </form>
+      </div>;
+
+  if(!data || summName === '')
+     return (
+       searchBar
+     )
+
+  if(error)
+    return (
+      <div>
+        {searchBar}
+        <h1>Error!</h1>
+      </div>
+    )
+
+  if(isLoading)
+    return (
+      <div>
+        {searchBar}
+        <h1>Loading...</h1>
+      </div>
+    )
+  
   return (
     <div>
-      <form className='search-bar' onSubmit={handleSubmit(onSubmit)}>
-        <input {...register('summName')} />
-        <button type="submit">
-          <i className="fas fa-search" />
-        </button>
-      </form>
-      {Object.keys(stateUser).length !== 0 ? <UserInfo user={stateUser}/> : ''}
-      {Object.keys(stateUser).length !==0 && matchList.length !== 0 ? <Matchs user={stateUser} matchList={matchList}/>: ''}
+      {searchBar}
+      {Object.keys(data).length !== 0 ?
+        (<div className='main-container'>
+          <div>
+            {Object.keys(data['user']).length !== 0 ? <UserInfo user={data['user']}/> : ''}
+          </div>
+          {Object.keys(data['user']).length !== 0 && data['matchs'].length !== 0 ? <Matchs user={data['user']} matchList={data['matchs']}/>: ''}
+        </div>) : ''
+      }
     </div>
   );
 }

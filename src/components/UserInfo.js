@@ -1,43 +1,48 @@
 import React from 'react';
 import '../style/UserInfo.css';
+import { useQuery } from 'react-query';
+import ProportionCircle from './graphic/ProportionCricle';
 
-class UserInfo extends React.Component{
-    constructor(props){
-        super(props);
-        this.state ={
-            user: props.user,
-            playerData: {} 
-        };
-    }
-    async componentDidMount(){
-        const url = `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${this.state.user.id}?api_key=${process.env.REACT_APP_API_KEY}`; 
-        console.log(url);
-        await fetch(url)
+const UserInfo = ({ user }) => {
+    const fetchUserInfo = async ({ queryKey }) => {
+        const url = `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${queryKey[1]}?api_key=${process.env.REACT_APP_API_KEY}`;
+        return await fetch(url)
             .then(res => res.json())
-            .then(data => this.setState({ playerData : data[0]}));
-
-    }
-
-    render(){
+    };
+    const { isLoading, error, data } = useQuery(['userInfo', user.id], fetchUserInfo);
+    if (error)
         return (
-            (Object.keys(this.state.playerData).length !== 0) ?
+            <div><h1>error!</h1></div>
+        )
+    if (isLoading)
+        return (
+            <div><h1>loading...</h1></div>
+        )
+
+    const playerData = data[0] || {}
+    return (
+        (Object.keys(playerData).length !== 0) ?
             <div className="user-info-container">
-                <img className='tier-emblem' src={`${process.env.PUBLIC_URL+'/assets/Emblems/Emblem_'+this.state.playerData.tier}.png`}/>
-                <div>
-                    <h1>{this.state.playerData.summonerName}</h1>
-                    <div>
-                        <p>W: {this.state.playerData.wins+ ' '} L: { this.state.playerData.losses} </p>
-                        <p>{(100 * (this.state.playerData.wins / (this.state.playerData.losses + this.state.playerData.wins))).toFixed(2)}% WR</p>
-                    </div>
-                    <h4>{
-                        this.state.playerData.tier + ' ' +
-                        this.state.playerData.rank + ' ' +
-                        this.state.playerData.leaguePoints}</h4>
-                    </div>
-            </div>: 'loading...'
-             
-        );
-    }
+                <img className='tier-emblem' src={`./assets/Emblems/Emblem_${playerData.tier}.png`} />
+                <p>
+                    {
+                        playerData.leaguePoints + ' LPs ' +
+                        playerData.tier + ' ' +
+                        playerData.rank
+                    }
+                </p>
+                <h1>{playerData.summonerName}</h1>
+                <p>W: {playerData.wins + ' '} L: {playerData.losses} </p>
+                <ProportionCircle
+                    text={(playerData.wins / (playerData.losses + playerData.wins)).toFixed(2).toString() + '%'}
+                    percentage={(playerData.wins / (playerData.losses + playerData.wins))}
+                    color="#badbed"
+                    width={150}
+                    height={150} />
+            </div>
+            : ''
+
+    );
 }
 
 export default UserInfo;
