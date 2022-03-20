@@ -1,7 +1,6 @@
 import { useRef, useEffect } from 'react';
 
 const ProportionCircle = ({text, percentage, width, height, color}) =>{
-    console.log(percentage);
     const canvasRef = useRef(null);
     const text_ = text || '';
     const width_ = width || 0;

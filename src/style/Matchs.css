@@ -1,6 +1,8 @@
 .matchs-container{
     display: inline-block;
     background-color: rgb(157, 175, 190);
-    width: 60rem;
-    margin: auto;
+
+    width: 100%;
+    margin: 0;
+    padding: 0 2rem;
 }

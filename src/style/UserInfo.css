@@ -8,8 +8,9 @@
     background-color:teal;
 
     border-radius: 5px;
+    width: 300px;
 
-    margin-right: 10%;
+    margin: 0;
 }
 
 .tier-emblem{

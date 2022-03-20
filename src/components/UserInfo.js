@@ -23,7 +23,7 @@ const UserInfo = ({ user }) => {
     return (
         (Object.keys(playerData).length !== 0) ?
             <div className="user-info-container">
-                <img className='tier-emblem' src={`./assets/Emblems/Emblem_${playerData.tier}.png`} />
+                <img className='tier-emblem' src={`${process.env.PUBLIC_URL}/assets/Emblems/Emblem_${playerData.tier}.png`} />
                 <p>
                     {
                         playerData.leaguePoints + ' LPs ' +
@@ -34,11 +34,11 @@ const UserInfo = ({ user }) => {
                 <h1>{playerData.summonerName}</h1>
                 <p>W: {playerData.wins + ' '} L: {playerData.losses} </p>
                 <ProportionCircle
-                    text={(playerData.wins / (playerData.losses + playerData.wins)).toFixed(2).toString() + '%'}
+                    text={(100*(playerData.wins / (playerData.losses + playerData.wins)).toFixed(2)).toString() + '%'}
                     percentage={(playerData.wins / (playerData.losses + playerData.wins))}
-                    color="#badbed"
-                    width={150}
-                    height={150} />
+                    color="#bed"
+                    width={100}
+                    height={100} />
             </div>
             : ''
 
