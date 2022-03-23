@@ -1,40 +1,55 @@
 import '../style/Item.css';
+import { useState } from 'react';
 
 const Item = ({p}) => {
+    const [tooltipInfo, setTooltipInfo] = useState({
+        enable: false,
+        title: '',
+        text: ''
+    });
+    const handleTooltip = () => {
+        console.log('tooletip')
+    }
     return (
         <div className='items'>
         {
             ((p.item0 !== 0) ? 
-                <div className='itemSlot'><img className='item-img' src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/item/${p.item0}.png`}/></div>:
+                <div className='itemSlot' onMouseEnter={handleTooltip()}>
+                    <img className='item-img' src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/item/${p.item0}.png`}/></div>:
                 <div className='itemSlot'/>)
         }
         {
             ((p.item1 !== 0) ? 
-                <div className='itemSlot'><img className='item-img' src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/item/${p.item1}.png`}/></div>:
+                <div className='itemSlot'>
+				<img className='item-img' src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/item/${p.item1}.png`}/></div>:
                 <div className='itemSlot'/>)
         }
 
         {
             ((p.item2 !== 0) ? 
-                <div className='itemSlot'><img className='item-img' src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/item/${p.item2}.png`}/></div>:
+                <div className='itemSlot'>
+				<img className='item-img' src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/item/${p.item2}.png`}/></div>:
                 <div className='itemSlot'/>)
         }
 
         {
             ((p.item3 !== 0) ? 
-                <div className='itemSlot'><img className='item-img' src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/item/${p.item3}.png`}/></div>:
+                <div className='itemSlot'>
+				<img className='item-img' src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/item/${p.item3}.png`}/></div>:
                 <div className='itemSlot'/>)
         }
 
         {
             ((p.item4 !== 0) ? 
-                <div className='itemSlot'><img className='item-img' src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/item/${p.item4}.png`}/></div>:
+                <div className='itemSlot'>
+				<img className='item-img' src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/item/${p.item4}.png`}/></div>:
                 <div className='itemSlot'/>)
         }
 
         {
             ((p.item5 !== 0) ? 
-                <div className='itemSlot'><img className='item-img' src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/item/${p.item5}.png`}/></div>:
+                <div className='itemSlot'>
+				<img className='item-img' src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/item/${p.item5}.png`}/></div>:
                 <div className='itemSlot'/>)
         }
 

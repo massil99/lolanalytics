@@ -3,6 +3,10 @@ import '../style/UserInfo.css';
 import { useQuery } from 'react-query';
 import ProportionCircle from './graphic/ProportionCricle';
 
+function capitalize(s){
+    return s && s[0].toUpperCase() + s.slice(1).toLowerCase();
+}
+
 const UserInfo = ({ user }) => {
     const fetchUserInfo = async ({ queryKey }) => {
         const url = `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${queryKey[1]}?api_key=${process.env.REACT_APP_API_KEY}`;
@@ -23,11 +27,11 @@ const UserInfo = ({ user }) => {
     return (
         (Object.keys(playerData).length !== 0) ?
             <div className="user-info-container">
-                <img className='tier-emblem' src={`${process.env.PUBLIC_URL}/assets/Emblems/Emblem_${playerData.tier}.png`} />
+                <img className='tier-emblem' src={`${process.env.PUBLIC_URL}/assets/Emblems/Emblem_${capitalize(playerData.tier)}.png`} />
                 <p>
                     {
                         playerData.leaguePoints + ' LPs ' +
-                        playerData.tier + ' ' +
+                        capitalize(playerData.tier) + ' ' +
                         playerData.rank
                     }
                 </p>
