@@ -5,10 +5,13 @@
     border-bottom: 1px grey solid;
     padding: 2rem 1rem 0;
     background-color: burlywood;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .search-bar > input {
-    margin: 0 1rem 0 0;
+    margin: 0;
     padding: 0 1rem; 
     outline: none;
     border: none;

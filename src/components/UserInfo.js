@@ -20,6 +20,8 @@ const UserInfo = ({ user }) => {
         )
 
     const playerData = data[0] || {}
+    const wr = playerData.wins / parseFloat(playerData.losses + playerData.wins);
+    console.log();
     return (
         (Object.keys(playerData).length !== 0) ?
             <div className="user-info-container">
@@ -34,9 +36,9 @@ const UserInfo = ({ user }) => {
                 <h1>{playerData.summonerName}</h1>
                 <p>W: {playerData.wins + ' '} L: {playerData.losses} </p>
                 <ProportionCircle
-                    text={(100*(playerData.wins / (playerData.losses + playerData.wins)).toFixed(2)).toString() + '%'}
-                    percentage={(playerData.wins / (playerData.losses + playerData.wins))}
-                    color="#bed"
+                    text={ (100*wr.toFixed(4)).toString() + '%'}
+                    percentage={wr}
+                    color="#ace"
                     width={100}
                     height={100} />
             </div>

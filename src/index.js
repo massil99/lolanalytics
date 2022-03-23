@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { QueryClient,QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
 
 const client = new QueryClient();
 ReactDOM.render(
@@ -12,7 +11,6 @@ ReactDOM.render(
     <React.StrictMode>
      <App />
     </React.StrictMode>
-    <ReactQueryDevtools/>
   </QueryClientProvider>
 ,
   document.getElementById('root')
