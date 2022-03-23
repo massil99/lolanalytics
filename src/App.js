@@ -9,6 +9,7 @@ const App = () => {
       <Routes>
         <Route path='*' element={<NotFound />} />
         <Route exact path="/" element={<Home />} />
+        <Route path="/summoner" element={<Summoner />} />
         <Route path="/summoner/:id" element={<Summoner />} />
       </Routes>
     </Router>

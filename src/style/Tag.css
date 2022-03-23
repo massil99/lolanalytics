@@ -1,0 +1,6 @@
+.tag{
+    display: inline-block;
+    border-radius: 15px;
+    padding: 0.2em 1em;
+    text-align: center;
+}
