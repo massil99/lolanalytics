@@ -1,5 +1,5 @@
 import '../style/Match.css';
-import Item from './Item';
+import Items from './Items';
 import { useState } from 'react';
 import Spell from './Spell';
 import ControlableText from './utile/ControlableText';
@@ -33,15 +33,16 @@ const Match = ({ data, user }) => {
             </div>
             <p>{self.totalMinionsKilled + self.neutralMinionsKilled} cs</p>
             <div>{self.kills}/{self.deaths}/{self.assists}</div>
-            <Item p={self} />
+            <Items p={self} />
           </div>
-          : <ul>
+          : <ul className='match-list'>
             {data.info.participants.map(p => {
               var cname = p.teamId === 100 ? 'blue-side' : 'red-side';
               cname += (p.teamPosition === 'TOP') ? ' top' : '';
               cname += (p.teamPosition === 'JUNGLE') ? ' jungler' : '';
               cname += (p.teamPosition === 'MIDDLE') ? ' mid' : '';
               cname += (p.teamPosition === 'BOTTOM') ? (p.role === 'SUPPORT') ? ' support' : ' adc' : '';
+              cname += ' match-card';
               return (
                 <li key={p.puuid} className={cname}>
                   <div>
@@ -61,7 +62,7 @@ const Match = ({ data, user }) => {
                     </div>
                     <img className="champ-img" src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${p.championName}.png`} />
                   </div>
-                  <Item p={p} />
+                  <Items p={p} />
                 </li>
               )
             })}

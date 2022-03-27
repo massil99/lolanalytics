@@ -1,28 +1,35 @@
 import '../style/Spell.css';
+import Tooltip from './Tooltip';
+import { useState } from 'react';
 
 const version = "12.5.1"
 const lookup = {
-    21: 'SummonerBarrier',
-    55: 'Summoner_UltBookSmitePlaceholder',
-    1: 'SummonerBoost',
-    14: 'SummonerDot',
-    3: 'SummonerExhaust',
-    4: 'SummonerFlash',
-    6: 'SummonerHaste',
-    7: 'SummonerHeal',
-    13: 'SummonerMana',
-    30: 'SummonerPoroRecall',
-    31: 'SummonerPoroThrow',
-    11: 'SummonerSmite',
-    39: 'SummonerSnowURFSnowball_Mark',
-    32: 'SummonerSnowball',
-    12: 'SummonerTeleport',
-    54: 'Summoner_UltBookPlaceholder',
+    21: 'Barrier',
+    55: '_UltBookSmitePlaceholder',
+    1:  'Boost',
+    14: 'Dot',
+    3:  'Exhaust',
+    4:  'Flash',
+    6:  'Haste',
+    7:  'Heal',
+    13: 'Mana',
+    30: 'PoroRecall',
+    31: 'PoroThrow',
+    11: 'Smite',
+    39: 'SnowURFSnowball_Mark',
+    32: 'Snowball',
+    12: 'Teleport',
+    54: '_UltBookPlaceholder',
 }
 
 const Spell = ({summId}) => {
-    const source = `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${lookup[summId || 54]}.png`;
-    return <img className='spell-img' src={source} />
+    const source = `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/Summoner${lookup[summId || 54]}.png`;
+
+    return (
+        <Tooltip title={lookup[summId || 54]} text="world">
+            <img className='spell-img' src={source} />
+        </Tooltip>
+    ) 
 }
 
 export default Spell;

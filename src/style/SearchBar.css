@@ -1,0 +1,32 @@
+
+.search-bar{
+    width: 500px;
+}
+
+.history-names{
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style: none;
+    background-color:aliceblue;
+    border: 1px solid black;
+}
+
+.history-names li {
+    border: 1px solid black;
+}
+
+.search-bar > input {
+    margin: 0;
+    padding: 0 1rem; 
+    outline: none;
+    border: none;
+    width: 15rem;
+    height: 2rem;
+
+}
+
+.search-bar > button {
+    height: 2rem;
+    width: 3rem;
+}

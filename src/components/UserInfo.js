@@ -7,9 +7,9 @@ function capitalize(s){
     return s && s[0].toUpperCase() + s.slice(1).toLowerCase();
 }
 
-const UserInfo = ({ user }) => {
+const UserInfo = ({ user, server }) => {
     const fetchUserInfo = async ({ queryKey }) => {
-        const url = `https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/${queryKey[1]}?api_key=${process.env.REACT_APP_API_KEY}`;
+        const url = `https://${server}/lol/league/v4/entries/by-summoner/${queryKey[1]}?api_key=${process.env.REACT_APP_API_KEY}`;
         return await fetch(url)
             .then(res => res.json())
     };
@@ -25,7 +25,6 @@ const UserInfo = ({ user }) => {
 
     const playerData = data[0] || {}
     const wr = playerData.wins / parseFloat(playerData.losses + playerData.wins);
-    console.log();
     return (
         (Object.keys(playerData).length !== 0) ?
             <div className="user-info-container">

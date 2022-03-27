@@ -4,14 +4,14 @@
     border: 1px black solid;
 }
 
-ul{
+.match-list{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     padding: 10px;
 }
 
-li{
+.match-card{
     padding: 5px;
     border: 1px grey solid;
     display: grid;
