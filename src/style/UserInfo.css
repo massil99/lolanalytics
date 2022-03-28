@@ -1,16 +1,16 @@
 .user-info-container{
     padding: 1rem 0;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    border: 1px green solid;
-    background-color:teal;
+    border: 1px solid var(--vivid-sky-blue);
+    background-color: var(--persian-blue);
 
     border-radius: 5px;
     width: 300px;
 
-    margin: 0;
 }
 
 .tier-emblem{

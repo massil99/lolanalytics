@@ -41,7 +41,7 @@ const UserInfo = ({ user, server }) => {
                 <ProportionCircle
                     text={ (100*wr.toFixed(4)).toString() + '%'}
                     percentage={wr}
-                    color="#ace"
+                    color="#e63946"
                     width={100}
                     height={100} />
             </div>

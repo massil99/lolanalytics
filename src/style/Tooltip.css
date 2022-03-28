@@ -3,7 +3,8 @@
 	top: 0;
 
 	color: white;
-	background: black;
+	background: var(--persian-blue);
+	border: 1px solid var(--vivid-sky-blue);
 
 	width: 400px;
 	height: auto;

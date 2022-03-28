@@ -8,12 +8,31 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     list-style: none;
-    background-color:aliceblue;
-    border: 1px solid black;
+    background-color: var(--byzantine);
+    border: 1px solid var(--flickr-pink);
 }
 
 .history-names li {
-    border: 1px solid black;
+    border: 1px solid var(--flickr-pink);
+    padding: 0.1rem 0.5rem;
+}
+
+.history-names li  button{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding: 0.2rem;
+    margin-left: 1rem;
+    color: white;
+}
+
+.history-names li  button:hover{
+    background-color: rgba(0, 0,0,0.1);
+}
+
+.history-names li a {
+    color: white;
+    text-decoration: none;
 }
 
 .search-bar > input {

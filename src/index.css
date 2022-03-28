@@ -11,3 +11,21 @@ body {
     padding:0;
     margin:0;
 }
+
+body{
+  background-color: var(--trypan-blue-2);
+}
+
+:root{
+  --flickr-pink: #f72585ff;
+  --byzantine: #b5179eff;
+  --purple: #7209b7ff;
+  --purple-2: #560badff;
+  /******************************/
+  --trypan-blue: #480ca8ff;
+  --trypan-blue-2: #3a0ca3ff;
+  --persian-blue: #3f37c9ff;
+  --ultramarine-blue: #4361eeff;
+  --dodger-blue: #4895efff;
+  --vivid-sky-blue: #4cc9f0ff;
+}

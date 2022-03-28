@@ -1,12 +1,13 @@
 
 header{
-    border-bottom: 1px grey solid;
+    border-bottom: 1px solid var(--vivid-sky-blue);
     padding: 2rem 1rem 0;
-    background-color: burlywood;
+    background-color: var(--trypan-blue);
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 .main-container{
-    display: flex;
+    display: grid; 
+    grid-template-columns: 1fr 1000px;
 }

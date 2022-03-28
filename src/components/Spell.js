@@ -1,8 +1,6 @@
 import '../style/Spell.css';
 import Tooltip from './Tooltip';
-import { useState } from 'react';
 
-const version = "12.5.1"
 const lookup = {
     21: 'Barrier',
     55: '_UltBookSmitePlaceholder',
@@ -23,7 +21,7 @@ const lookup = {
 }
 
 const Spell = ({summId}) => {
-    const source = `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/Summoner${lookup[summId || 54]}.png`;
+    const source = `http://ddragon.leagueoflegends.com/cdn/${process.env.REACT_APP_GAME_VERSION}/img/spell/Summoner${lookup[summId || 54]}.png`;
 
     return (
         <Tooltip title={lookup[summId || 54]} text="world">

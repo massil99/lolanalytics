@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Spell from './Spell';
 import ControlableText from './utile/ControlableText';
 
-const version = "12.5.1";
 
 const Match = ({ data, user }) => {
   const [expend, setExpend] = useState(false);
@@ -28,7 +27,7 @@ const Match = ({ data, user }) => {
                 </div>
                 <img
                   className="champ-img"
-                  src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${self.championName}.png`} />
+                  src={`http://ddragon.leagueoflegends.com/cdn/${process.env.REACT_APP_GAME_VERSION}/img/champion/${self.championName}.png`} />
               </div>
             </div>
             <p>{self.totalMinionsKilled + self.neutralMinionsKilled} cs</p>
@@ -60,7 +59,7 @@ const Match = ({ data, user }) => {
                       <Spell summId={p.summoner1Id} />
                       <Spell summId={p.summoner2Id} />
                     </div>
-                    <img className="champ-img" src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${p.championName}.png`} />
+                    <img className="champ-img" src={`http://ddragon.leagueoflegends.com/cdn/${process.env.REACT_APP_GAME_VERSION}/img/champion/${p.championName}.png`} />
                   </div>
                   <Items p={p} />
                 </li>

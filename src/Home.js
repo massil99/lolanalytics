@@ -4,9 +4,9 @@ import Tag from './components/utile/Tag';
 const Home = () => {
     return (
         <div>
-            <h1>Home</h1>;
+            <h1>Home</h1>
             <Link to="/summoner">
-                Matchs
+                <Tag text="Matches"/>
             </Link>
         </div>
     )

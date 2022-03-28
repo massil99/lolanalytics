@@ -1,7 +1,8 @@
 .match-container{
     padding: 0;
     margin-bottom: 20px;
-    border: 1px black solid;
+    border: 1px var(--purple) solid;
+    border-radius: 10px;
 }
 
 .match-list{
@@ -13,7 +14,7 @@
 
 .match-card{
     padding: 5px;
-    border: 1px grey solid;
+    border: 1px var(--purple-2) solid;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     list-style: none;
@@ -50,10 +51,10 @@
 }
 
 .win{
-    background-color: #aefada;
+    background-color: #50f8b266;
 }
 .loss{
-    background-color: #fe8aaa;
+    background-color: #fe8aaa66;
 }
 
 .retracted-match{
@@ -65,10 +66,13 @@
     align-items: center;
 }
 .expend-btn{
-    width: 100%;
-    margin: 0;
+    width: 40px;
+    padding: 0.5rem;
+    border-radius: 10px;
+    margin-left: 1rem;
     border: none;
     outline: none;
+    background-color: var(--flickr-pink);
 }
 
 .summonerSpells {
